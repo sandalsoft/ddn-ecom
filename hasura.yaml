@@ -1,0 +1,12 @@
+version: v1
+project: stunning-stallion-1918
+subgraphs:
+  analytics:
+    path: ./analytics
+  experience:
+    path: ./experience
+  sales:
+    path: ./sales
+  users:
+    path: ./users
+defaultSupergraphManifest: base
