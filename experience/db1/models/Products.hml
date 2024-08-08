@@ -377,6 +377,11 @@ definition:
         modelField:
           - fieldName: productId
 
+
+## Definition:  Products.formatCurrency(Products.price: number) ==outputs==> toCurrencyString
+## This makes 'price' on this Model (Products) the input for the command ToCurrencyString (command name, not the function name in code)
+##   
+## 
 ---
 kind: Relationship
 version: v1
@@ -394,3 +399,23 @@ definition:
       target:
         argument:
           argumentName: amount
+
+
+
+# ---
+# kind: Relationship
+# version: v1
+# definition:
+#   name: transactionsTotalAmount
+#   source: ScppRawAccountsPositionInstrumentTransactionsTaxlots
+#   target:
+#     command:
+#       name: ProcessTransactionsTotal
+#       subgraph: app
+#   mapping:
+#     - source:
+#         fieldPath:
+#           - fieldName: app_processTransactionsTotal
+#       target:
+#         argument:
+#           argumentName: transactions          

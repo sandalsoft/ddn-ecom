@@ -1,3 +1,5 @@
+
+
 /**
  * @readonly Exposes the function as an NDC function (the function should only query data without making modifications)
  */
@@ -30,25 +32,29 @@ export function toDateString(date?: string): string {
  * Formats a number into a currency string.
  *
  * @param amount The number to format into currency.
+ * @param currency The currency to format into.  Default is USD
  * @returns The formatted currency string.
  * @readonly This function should only format data without making modifications to the input.
  * @paralleldegree 5
  */
- export function toCurrencyString(amount?: number): string {
+export function toLocaleCurrencyString(amount?: number, currency = `USD`): string {
   console.log("amount", amount);
   if (amount === undefined || isNaN(amount)) {
-      return "Invalid amount";
+    return "Invalid amount";
   }
   try {
-      return amount.toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD'
-      });
+    return amount.toLocaleString('en-US', {
+      style: 'currency',
+      currency
+    });
   } catch (error) {
-      console.error("Error formatting currency:", error);
-      return "Invalid amount";
+    console.error("Error formatting currency:", error);
+    return "Invalid amount";
   }
 }
+
+
+
 
 interface GithubProfile {
   bio: string | null; // Assuming 'bio' can be null
@@ -95,7 +101,7 @@ export async function get_github_profile_description(
  * @paralleldegree 1
  */
 
- export async function get_github_profile_description_noparallel(
+export async function get_github_profile_description_noparallel(
   username: string
 ): Promise<string | null> {
   try {
